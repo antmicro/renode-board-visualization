@@ -1,0 +1,9 @@
+using sysbus
+logFile $CWD/renode.log
+mach create
+machine LoadPlatformDescription @platforms/boards/arduino_nano_33_ble.repl
+logLevel -1 gpio0
+logLevel 3 nvic
+sysbus LoadELF $ORIGIN/binaries/nordic-zephyr-blinky.elf
+i $ORIGIN/vis.py
+s

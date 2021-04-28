@@ -1,0 +1,19 @@
+test:
+  image: antmicro/renode
+  before_script:
+    - apt -qqy update
+    - export DEBIAN_FRONTEND=noninteractive
+    - apt install -qqy --no-install-recommends ca-certificates fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils
+    - apt install -qqy --no-install-recommends python3-pip python3-setuptools python3-dev wget curl p7zip unzip git gnupg libnss3 srecord gcc libx11-xcb-dev ffmpeg
+    - wget https://dl.antmicro.com/projects/renode/builds/renode_1.12.0+20210411gitf393e11_amd64.deb
+    - dpkg -i renode*.deb
+    - curl -sL https://deb.nodesource.com/setup_15.x  | bash -
+    - apt install -qqy --no-install-recommends nodejs
+  script:
+    - cd tests
+    - ./install.sh
+    - ./test.py
+  artifacts:
+    paths:
+      - "tests/*.webm"
+      - "renode.log"

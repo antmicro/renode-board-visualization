@@ -1,0 +1,289 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#000000">
+</head>
+
+<body>
+  <div id="app">
+    <nav>
+      <div class="logo__container">
+        <svg class="logo__renode" viewBox="0 0 215 32">
+          <image xlink:href="assets/renode-logo-blue.svg"/>
+        </svg>
+      </div>
+      <ul class="nav__links">
+        <li class="links__btn links__btn--active">
+          <a class="links__anchor" href="/">ARDUINO NANO 33 BLE SENSE</a> 
+        </li>
+      </ul>
+    </nav>
+    <div id="container">
+        <svg class="board" version="1.1" width="100%" height="100%" viewBox="-500 0 1500 800" >
+          <image xlink:href="assets/bg-frame.svg" y="20" x="-350" preserveAspectRatio="none"
+            height="733" width="1128" />
+          <ellipse class="interactive" style="opacity:1;fill:#ff6e69;" id="LED--led_red" cx="178" cy="180"
+            rx="8" ry="8" />
+          <foreignobject id="firstChip" class="chip" width="30" height="30" y="312.5" x="252.5" 
+           onmouseover="toggleSensorGroup('first-group')" onmouseout="toggleSensorGroup('first-group')"/>
+          <svg id="firstLine" class="line" width="307" height="187" y="145" x="282" viewBox="0 0 307 187" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 185.527H121L306 0.527435" stroke="#007DED"/>
+          </svg>
+          <foreignobject id="secondChip" class="chip" width="22" height="51" y="377" x="231" 
+           onmouseover="toggleSensorGroup('second-group')" onmouseout="toggleSensorGroup('second-group')"/>
+          <svg id="secondLine" class="line" width="436" height="38" y="342" x="252.5" viewBox="0 0 436 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.5 37H399L435.5 0.5" stroke="#017DED"/>
+          </svg>
+          <foreignobject id="thirdChip" class="chip" width="35" height="41" y="391.5" x="260" 
+           onmouseover="toggleSensorGroup('third-group')" onmouseout="toggleSensorGroup('third-group')"/>
+          <svg id="thirdLine" class="line" width="421" height="144" viewBox="0 0 421 144" y="417" x="295" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 1H278.5L420.5 143" stroke="#017DED"/>
+          </svg>
+           <foreignobject id="fourthChip" class="chip" width="35" height="41" y="435" x="220" 
+           onmouseover="toggleSensorGroup('fourth-group')" onmouseout="toggleSensorGroup('fourth-group')"/>
+          <svg id="fourthLine" class="line" width="223" height="128" y="454" x="255" viewBox="0 0 223 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 1H95.5L222 127.5" stroke="#007DED"/>
+          </svg>
+           <ellipse id="camera" class="chip" style="opacity:1;fill:#fff;" cx="-122.5" cy="307" rx="15" ry="15" 
+           onmouseover="toggleSensorGroup('fifth-group')" onmouseout="toggleSensorGroup('fifth-group')"/>
+          <svg id="fifthLine" class="line" width="155" height="54" y="255" x="-290" viewBox="0 0 155 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M155 53H53L0.5 0.5" stroke="#007DED"/>
+          </svg>
+           <foreignobject x="595.5" y="20" width="100%" height="100" >
+            <div name="first-group" class="sensor__circle" onmouseover="toggle('firstChip','firstLine')" onmouseout="toggle('firstChip','firstLine')">
+              <image name="first-group" class="sensor" src="assets/sensors/temp.svg"  />
+            </div>
+            <div name="first-group" class="sensor__data">
+              <p class="sensor__data__name">TEMPERATURE</p>
+              <p class="sensor__data__text">35&#8451</p>
+            </div>
+          </foreignobject>
+          <foreignobject x="595.5" y="85.5" width="100%" height="100">
+            <div name="first-group" class="sensor__circle" onmouseover="toggle('firstChip','firstLine')" onmouseout="toggle('firstChip','firstLine')">
+              <image name="first-group" class="sensor" src="assets/sensors/hum.svg" />
+            </div>
+            <div name="first-group" class="sensor__data">
+              <p class="sensor__data__name">HUMIDITY</p>
+              <p class="sensor__data__text">25%</p>
+            </div>
+          </foreignobject>
+          <foreignobject x="595.5" y="150.5" width="100%" height="100">
+            <div name="first-group" class="sensor__circle" onmouseover="toggle('firstChip','firstLine')" onmouseout="toggle('firstChip','firstLine')">
+              <image name="first-group" class="sensor" src="assets/sensors/press.svg" />
+            </div>
+            <div name="first-group" class="sensor__data">
+              <p class="sensor__data__name">PRESSURE</p>
+              <p class="sensor__data__text">1014 HPA</p>
+            </div>
+          </foreignobject>
+          <foreignobject x="695" y="220" width="100%" height="100">
+            <div name="second-group" class="sensor__circle" onmouseover="toggle('secondChip','secondLine')" onmouseout="toggle('secondChip','secondLine')">
+              <image name="second-group" class="sensor" src="assets/sensors/prox.svg" />
+            </div>
+            <div name="second-group" class="sensor__data">
+              <p class="sensor__data__name">PROXIMITY</p>
+              <p class="sensor__data__text">60 CM</p>
+            </div>
+          </foreignobject>
+          <foreignobject x="695" y="285.5" width="100%" height="100">
+            <div name="second-group" class="sensor__circle" onmouseover="toggle('secondChip','secondLine')" onmouseout="toggle('secondChip','secondLine')">
+              <image name="second-group" class="sensor" src="assets/sensors/gest.svg" />
+            </div>
+            <div name="second-group" class="sensor__data">
+              <p class="sensor__data__name">GESTURE</p>
+              <p class="sensor__data__text">WAVE</p>
+            </div>
+          </foreignobject>
+          <foreignobject x="695" y="350.5" width="100%" height="100">
+            <div name="second-group" class="sensor__circle" onmouseover="toggle('secondChip','secondLine')" onmouseout="toggle('secondChip','secondLine')">
+              <image name="second-group" class="sensor" src="assets/sensors/color.svg" />
+            </div>
+            <div name="second-group" class="sensor__data">
+              <p class="sensor__data__name">COLOR</p>
+              <p class="sensor__data__text">R:14 G:15 B:250</p>
+            </div>     
+          </foreignobject>
+          <foreignobject x="695" y="415" width="100%" height="100">
+            <div name="second-group" class="sensor__circle" onmouseover="toggle('secondChip','secondLine')" onmouseout="toggle('secondChip','secondLine')">
+              <image name="second-group" class="sensor" src="assets/sensors/bright.svg" />
+            </div>
+            <div name="second-group" class="sensor__data">
+              <p class="sensor__data__name">BRIGHTNESS</p>
+              <p class="sensor__data__text">1000 LUX</p>
+            </div>
+          </foreignobject>
+          <foreignobject x="723" y="499" width="100%" height="100">
+            <div name="third-group" class="sensor__circle" onmouseover="toggle('thirdChip','thirdLine')" onmouseout="toggle('thirdChip','thirdLine')">
+              <image name="third-group" class="sensor" src="assets/sensors/orient.svg" />
+            </div>
+            <div name="third-group" class="sensor__data">
+              <p class="sensor__data__name">ORIENTATION</p>
+              <p class="sensor__data__text">ROLL: 17 PITCH: 49</p>
+            </div>
+          </foreignobject>
+          <foreignobject x="723" y="565" width="100%" height="100">
+            <div name="third-group" class="sensor__circle" onmouseover="toggle('thirdChip','thirdLine')" onmouseout="toggle('thirdChip','thirdLine')">
+              <image name="third-group" class="sensor" src="assets/sensors/vibr.svg" />
+            </div>
+            <div name="third-group" class="sensor__data">
+              <p class="sensor__data__name">VIBRATION</p>
+              <p class="sensor__data__text">35</p>
+            </div>
+          </foreignobject>
+          <foreignobject x="723" y="630" width="100%" height="100">
+            <div name="third-group" class="sensor__circle" onmouseover="toggle('thirdChip','thirdLine')" onmouseout="toggle('thirdChip','thirdLine')">
+              <image name="third-group" class="sensor" src="assets/sensors/motion.svg" />
+            </div>
+            <div name="third-group" class="sensor__data">
+              <p class="sensor__data__name">MOTION</p>
+              <p class="sensor__data__text">DETECTED</p>
+            </div>
+          </foreignobject>
+          <foreignobject x="483" y="571" width="100" height="100">
+            <div name="fourth-group" class="sensor__circle" onmouseover="toggle('fourthChip','fourthLine')" onmouseout="toggle('fourthChip','fourthLine')" >
+              <image name="fourth-group" class="sensor" src="assets/sensors/micro.svg" />
+            </div>
+          </foreignobject>
+          <foreignobject x="487.5" y="697.5" width="100" height="100">
+            <div class="sensor__circle">
+              <image class="sensor" src="assets/sensors/chip.svg" />
+            </div>
+          </foreignobject>
+          <foreignobject x="-508.5" y="176.5" width="213" height="100">
+            <div name="fifth-group" class="sensor__circle sensor__circle--left" onmouseover="toggle('camera','fifthLine')" onmouseout="toggle('camera','fifthLine')">
+              <image name="fifth-group" class="sensor" src="assets/sensors/picture.svg" />
+            </div>
+            <div name="fifth-group" class="sensor__data">
+              <p class="sensor__data__name sensor__data__name--left">PHOTO</p>
+              <p class="sensor__data__text sensor__data__text--left">SAVED AS *.JPG</p>
+            </div>
+          </foreignobject>
+          <foreignobject x="-350" y="242" width="100" height="100">
+            <div name="fifth-group" class="sensor__circle" onmouseover="toggle('camera','fifthLine')" onmouseout="toggle('camera','fifthLine')">
+              <image name="fifth-group" class="sensor" src="assets/sensors/play.svg" />
+            </div>
+          </foreignobject>
+        </svg>
+    </div>
+  </div>
+  <footer>
+    <div class="footer__brand">
+      <svg class="logo__renode logo__footer" viewBox="0 0 215 32">
+        <image xlink:href="assets/renode-logo-white.svg"/>
+      </svg>
+      <div class="brand__container">
+        <span class="caption">By:</span>
+        <a class="brand__link" href="https://www.antmicro.com" target="_blank"></a>
+      </div>
+      <div class="footer__social">
+        <a class="social__link" href="https://twitter.com/renodeio">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.622 0-3.131-.476-4.402-1.291 1.524.18 3.045-.244 4.252-1.189-1.256-.023-2.317-.854-2.684-1.995.451.086.895.061 1.298-.049-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359-1.279-.855-1.641-2.544-.889-3.835 1.416 1.738 3.533 2.881 5.92 3.001-.419-1.796.944-3.527 2.799-3.527.825 0 1.572.349 2.096.907.654-.128 1.27-.368 1.824-.697-.215.671-.67 1.233-1.263 1.589.581-.07 1.135-.224 1.649-.453-.384.578-.87 1.084-1.433 1.489z" fill="#fff"/></svg>
+        </a>
+        <a class="social__link" href="https://github.com/renode/renode" target="_blank">
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M11.999 0C5.372 0 0 5.508 0 12.305 0 17.74 3.438 22.35 8.207 23.979c.6.112.818-.267.818-.593 0-.292-.01-1.066-.015-2.093-3.339.744-4.043-1.649-4.043-1.649-.546-1.422-1.332-1.8-1.332-1.8-1.09-.763.083-.747.083-.747 1.203.086 1.837 1.267 1.837 1.267 1.07 1.88 2.809 1.338 3.493 1.022.108-.794.419-1.337.76-1.644-2.663-.31-5.465-1.367-5.465-6.081 0-1.343.468-2.441 1.236-3.302-.124-.312-.535-1.562.117-3.257 0 0 1.007-.33 3.3 1.262.957-.273 1.984-.41 3.004-.414 1.019.004 2.046.141 3.005.414 2.29-1.592 3.296-1.262 3.296-1.262.655 1.695.243 2.945.119 3.257.77.86 1.234 1.959 1.234 3.302 0 4.726-2.806 5.767-5.478 6.072.43.379.813 1.13.813 2.277 0 1.645-.014 2.973-.014 3.376 0 .329.216.711.825.591 4.764-1.63 8.2-6.238 8.2-11.672C24 5.508 18.626 0 11.999 0" fill="#fff"></path></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer__copyright caption">
+      Copyright &copy; 2010-2021 Antmicro
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOM fully loaded and parsed')
+
+      let interactive = document.getElementsByClassName("interactive")
+      let els = {}
+      for (el of interactive) {
+        let idSplit = el.id.split("--")
+        el.objectType = idSplit[0]
+        els[idSplit[1]] = el
+      }
+      for (el of Object.values(els)) {
+        if (el.objectType == "LED")
+          el.classList.add("hidden")
+      }
+
+      let ws = new WebSocket("ws://localhost:9001/")
+
+      ws.onopen = function () {
+        console.log("onopen")
+      }
+
+      ws.onmessage = function (e) {
+        // e.data contains received string.
+        console.log("onmessage: " + e.data)
+        let split = e.data.split("|")
+        let type = split[0]
+        let name = split[1]
+        let message = split[2]
+
+        if (type == "LED") {
+          let el = els[name]
+          if (message == "True") {
+            el.classList.remove("hidden")
+          }
+          else {
+            el.classList.add("hidden")
+          }
+        }
+      }
+
+      ws.onclose = function () {
+        console.log("onclose")
+      }
+
+      ws.onerror = function (e) {
+        console.log("onerror")
+        console.log(e)
+      }
+
+    })
+  </script>
+  <script>
+    function toggleSensorGroup(groupName) {
+      let elements = document.getElementsByName(groupName)
+      for (el of elements) {
+        className = el.classList[0]
+        expander = className+"--expanded"
+        if (el.classList.contains(expander)) {
+          el.classList.remove(expander)
+        }
+        else {
+          el.classList.add(expander)
+        }
+      }
+    }
+
+    function toggle(chipName, lineId) {
+      let element = document.getElementById(chipName)
+      expander = "highlighted"
+      if (element.classList.contains(expander)) {
+        element.classList.remove(expander)
+        stopDrawingPath(lineId)
+      }
+      else {
+        element.classList.add(expander)
+        startDrawingPath(lineId)
+      }
+    }
+
+    function startDrawingPath(lineId){
+      let line = document.getElementById(lineId)
+      line.style = "opacity: 100%;stroke-dasharray: 1000;stroke-dashoffset: 1000;animation: dash_reverse 0.5s linear forwards;"
+    }
+
+    function stopDrawingPath(lineId){
+      let line = document.getElementById(lineId)
+      line.style = "opacity:0;"
+    }
+  </script>
+</body>
+
+</html>

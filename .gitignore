@@ -1,0 +1,8 @@
+renode-portable
+out.png
+images
+images.txt
+*.webm
+package-lock.json
+node_modules
+renode*.log*

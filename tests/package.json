@@ -1,0 +1,8 @@
+{
+  "name": "screencast",
+  "version": "1.0.0",
+  "description": "Grab a screencast of the visualization webpage.",
+  "dependencies": {
+    "puppeteer-video-recorder": "github:antmicro/puppeteer-video-recorder"
+  }
+}
