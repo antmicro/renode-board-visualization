@@ -13,7 +13,7 @@ def cli_or_die(text):
 
 PORT = 8000
 
-tell_renode("i @script.resc")
+tell_renode("i @scripts/led.resc")
 cli_or_die("Starting emulation...\n")
 cli_or_die("(machine-0)")
 

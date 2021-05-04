@@ -8,6 +8,7 @@ import SocketServer
 from threading import Thread
 
 from Antmicro.Renode.Peripherals.Miscellaneous import LED
+from Antmicro.Renode.Peripherals.UART import IUART
 # get current path, 0 is for Renode directory, 1 for cwd
 cwd = monitor.CurrentPathPrefixes[1]
 sys.path.append(cwd)
@@ -18,6 +19,15 @@ os.chdir(cwd)
 
 from websocket_server import WebsocketServer
 
+def send_message(message):
+    if websocket_server is not None and len(websocket_server.clients) > 0:
+        for client in websocket_server.clients:
+            try:
+                websocket_server.send_message(client, message)
+            except Exception as e:
+                # in case something got disconnected
+                pass
+
 # called when a client sends a message
 def message_received(client, server, message):
     if len(message) > 200:
@@ -25,15 +35,12 @@ def message_received(client, server, message):
     print "Client(%d) said: %s" % (client['id'], message)
 
 
-def BlinkBlink(led, state):
-    if websocket_server is not None and len(websocket_server.clients) > 0:
-        # for now we hardcode led_blue
-        for client in websocket_server.clients:
-            try:
-                websocket_server.send_message(client, "|".join(["LED", machine.GetLocalName(led), str(state)]))
-            except Exception as e:
-                # in case something got disconnected
-                pass
+def blink_led(led, state):
+    send_message("|".join(["LED", machine.GetLocalName(led), str(state)]))
+
+
+def send_uart_chars(char):
+    send_message("|".join(["UART", "uart0", chr(char)]))
 
 main_server = None
 server_thread = None
@@ -58,7 +65,13 @@ def mc_serveVisualization(port):
 
     leds = machine.GetPeripheralsOfType[LED]()
     for led in leds:
-        led.StateChanged += BlinkBlink
+        led.StateChanged += blink_led
+    
+    uarts = machine.GetPeripheralsOfType[IUART]()
+    for uart in uarts:
+        uart.CharReceived += send_uart_chars
+        #break on uart0
+        break
 
     # setting up server threads
     websocket_server = WebsocketServer(9001)

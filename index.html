@@ -29,6 +29,7 @@
             height="733" width="1128" />
           <ellipse class="interactive" style="opacity:1;fill:#ff6e69;" id="LED--led_red" cx="178" cy="180"
             rx="8" ry="8" />
+          <image xlink:href="assets/sensors/uart.svg" y="700" x="-350" height="55" width="55" />
           <foreignobject id="firstChip" class="chip" width="30" height="30" y="312.5" x="252.5" 
            onmouseover="toggleSensorGroup('first-group')" onmouseout="toggleSensorGroup('first-group')"/>
           <svg id="firstLine" class="line" width="307" height="187" y="145" x="282" viewBox="0 0 307 187" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -168,6 +169,15 @@
               <image name="fifth-group" class="sensor" src="assets/sensors/play.svg" />
             </div>
           </foreignobject>
+          <foreignobject x="-350" y="700" width="200" height="100">
+            <div class="sensor__circle">
+              <image class="sensor" src="assets/sensors/uart_highlight.svg" onclick="openWindow()"/>
+            </div>
+            <div class="sensor__data sensor__uart">
+              <p class="sensor__data__name">UART</p>
+              <p id="uart_content" class="sensor__data__text"></p>
+            </div>
+          </foreignobject>
         </svg>
     </div>
   </div>
@@ -200,6 +210,8 @@
 
       let interactive = document.getElementsByClassName("interactive")
       let els = {}
+      let uartChars = []
+      let uartContent = document.getElementById("uart_content")
       for (el of interactive) {
         let idSplit = el.id.split("--")
         el.objectType = idSplit[0]
@@ -217,8 +229,6 @@
       }
 
       ws.onmessage = function (e) {
-        // e.data contains received string.
-        console.log("onmessage: " + e.data)
         let split = e.data.split("|")
         let type = split[0]
         let name = split[1]
@@ -232,6 +242,10 @@
           else {
             el.classList.add("hidden")
           }
+        }
+        else if (type == "UART") {
+          uartChars.push(message)
+          uartContent.textContent = uartChars.slice(Math.max(uartChars.length - 10, 0)).toString().replace(/,/g, '');
         }
       }
 
@@ -283,6 +297,7 @@
       let line = document.getElementById(lineId)
       line.style = "opacity:0;"
     }
+
   </script>
 </body>
 

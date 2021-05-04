@@ -1,0 +1,7 @@
+using sysbus
+mach create
+machine LoadPlatformDescription @platforms/boards/arduino_nano_33_ble.repl
+sysbus LoadELF $ORIGIN/../binaries/person_detection.elf
+spi2.camera ImageSource $ORIGIN/../assets/person_detection_default.jpg
+i $ORIGIN/../vis.py
+s

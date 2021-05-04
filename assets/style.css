@@ -255,6 +255,10 @@ footer {
   max-width: 500px;
 }
 
+.sensor__uart {
+  width: 200px;
+}
+
 .sensor__data__name {
   font-weight: 500;
   font-size: .8em;
