@@ -7,6 +7,7 @@ html, body {
   font-family: 'Work Sans', sans;
   font-size: .935rem;
   overflow: hidden;
+  height: 100%;
 }
 
 #app {
