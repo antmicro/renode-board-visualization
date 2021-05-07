@@ -22,6 +22,8 @@ export PATH="`pwd`/renode_portable:$PATH"
 
 ## Usage
 
+### Blinky
+
 To open the interactive visualisation in your browser, run:
 
 ```
@@ -39,6 +41,27 @@ xdg-open localhost:8000
 You should be able to see the Arduino Nano wireframe with a blinking LED and some interactive elements.
 
 ![Renode visualisation](./assets/renode-visualisation.png "Arduino Nano 33 BLE Sense visualisation")
+
+### Person detection
+
+Another available demo is the [TensorFlow Lite Micro person detection](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/micro/examples/person_detection).
+To start it, run:
+
+```
+renode scripts/person_detection.resc
+# in Renode:
+(machine-0) serveVisualization 8000
+```
+
+Then open [localhost:8000](http://localhost:8000) in your browser:
+
+```
+xdg-open localhost:8000
+```
+
+You will see a similar wireframe, but you will be able to observe the detection results in the UART bubble in the bottom left part of the page.
+
+## Testing
 
 To run an automatic test with a screen grabber, run
 
