@@ -25,7 +25,7 @@ export PATH="`pwd`/renode_portable:$PATH"
 To open the interactive visualisation in your browser, run:
 
 ```
-renode scripts/led.resc
+renode scripts/blinky.resc
 # in Renode:
 (machine-0) serveVisualization 8000
 ```
