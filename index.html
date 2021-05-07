@@ -236,6 +236,9 @@
 
         if (type == "LED") {
           let el = els[name]
+          if(el == null) {
+            return
+          }
           if (message == "True") {
             el.classList.remove("hidden")
           }
