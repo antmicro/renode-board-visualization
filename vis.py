@@ -6,8 +6,11 @@ import os
 import SimpleHTTPServer
 import SocketServer
 from threading import Thread
+import base64
+import tempfile
 
 from Antmicro.Renode.Peripherals.Miscellaneous import LED
+from Antmicro.Renode.Peripherals.Sensors import ArduCAMMini2MPPlus
 from Antmicro.Renode.Peripherals.UART import IUART
 # get current path, 0 is for Renode directory, 1 for cwd
 cwd = monitor.CurrentPathPrefixes[1]
@@ -30,9 +33,17 @@ def send_message(message):
 
 # called when a client sends a message
 def message_received(client, server, message):
-    if len(message) > 200:
-        message = message[:200]+'..'
-    print "Client(%d) said: %s" % (client['id'], message)
+    splitted = message.split("|", 1)
+    if splitted[0] == "IMAGE":
+        imageFile = tempfile.NamedTemporaryFile(delete=False)
+        data = base64.b64decode(splitted[1])
+        imageFile.write(data)
+        imageFile.close()
+        camera_replace_image(imageFile.name)
+    else: 
+        if len(message) > 200:
+            message = message[:200]+'..'
+        print "Client(%d) said: %s" % (client['id'], message)
 
 
 def blink_led(led, state):
@@ -41,6 +52,15 @@ def blink_led(led, state):
 
 def send_uart_chars(char, uartName):
     send_message("|".join(["UART", uartName, chr(char)]))
+
+
+def camera_replace_image(imagePath):
+    cameras = machine.GetPeripheralsOfType[ArduCAMMini2MPPlus]()
+    for camera in cameras:
+        camera.ImageSource = imagePath
+        break
+    print("Image uploaded")
+
 
 main_server = None
 server_thread = None

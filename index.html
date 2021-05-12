@@ -159,11 +159,12 @@
           </foreignobject>
           <foreignobject x="-508.5" y="172" width="213" height="100">
             <div id="imageButton" name="fifth-group" class="sensor__circle sensor__circle--left" onmouseover="toggle('camera','fifthLine')" onmouseout="toggle('camera','fifthLine')" onclick="showFileDialog()">
+              <input id='image' type='file' hidden/>
               <image name="fifth-group" class="sensor" src="assets/sensors/picture.svg" />
             </div>
             <div name="fifth-group" class="sensor__data">
               <p class="sensor__data__name sensor__data__name--left">PHOTO</p>
-              <p class="sensor__data__text sensor__data__text--left">SAVED AS *.JPG</p>
+              <p id="image_file" class="sensor__data__text sensor__data__text--left">Click to upload</p>
             </div>
           </foreignobject>
           <foreignobject x="-350" y="235" width="100" height="100">
@@ -176,7 +177,7 @@
               <image class="sensor" src="assets/sensors/uart_highlight.svg" onclick="openWindow()"/>
             </div>
             <div class="sensor__data sensor__uart">
-              <p class="sensor__data__name uart__name">UART</p>
+              <p class="sensor__data__name uart__name">UART0</p>
               <p id="uart_content" class="sensor__data__text uart__text"></p>
             </div>
           </foreignobject>
@@ -263,6 +264,21 @@
         console.log(e)
       }
 
+      let imageInput = document.getElementById('image')
+      imageInput.addEventListener("change", uploadFile, false);
+
+      function uploadFile() {
+        var selectedFile = imageInput.files[0]
+        var reader = new FileReader()
+        reader.onloadend = function() {
+          var base64String = reader.result
+          .replace("data:", "")
+          .replace(/^.+,/, "")
+          ws.send("IMAGE"+"|"+base64String)
+        }
+        reader.readAsDataURL(selectedFile)
+      }
+
     })
   </script>
   <script>
@@ -303,6 +319,9 @@
       line.style = "opacity:0;"
     }
 
+    function showFileDialog(){
+      document.getElementById('image').click()
+    }
   </script>
 </body>
 
