@@ -27,35 +27,37 @@
         <svg class="board" version="1.1" width="100%" height="100%" viewBox="-500 0 1500 800" >
           <image xlink:href="assets/bg-frame.svg" y="20" x="-350" preserveAspectRatio="none"
             height="733" width="1128" />
-          <ellipse class="interactive" style="opacity:1;fill:#ff6e69;" id="LED--led_red" cx="178" cy="180"
+          <ellipse class="interactive" style="opacity:1;fill:#ff6e69;" id="LED--led_red" cx="178.5" cy="175.5"
             rx="8" ry="8" />
-          <image xlink:href="assets/sensors/uart.svg" y="700" x="-350" height="55" width="55" />
-          <foreignobject id="firstChip" class="chip" width="30" height="30" y="312.5" x="252.5" 
+          <foreignobject id="firstChip" class="chip" width="30" height="30" y="305" x="252.5" 
            onmouseover="toggleSensorGroup('first-group')" onmouseout="toggleSensorGroup('first-group')"/>
-          <svg id="firstLine" class="line" width="307" height="187" y="145" x="282" viewBox="0 0 307 187" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg id="firstLine" class="line" width="307" height="187" y="136.5" x="282" viewBox="0 0 307 187" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 185.527H121L306 0.527435" stroke="#007DED"/>
           </svg>
-          <foreignobject id="secondChip" class="chip" width="22" height="51" y="377" x="231" 
+          <foreignobject id="secondChip" class="chip" width="22" height="51" y="367.5" x="231" 
            onmouseover="toggleSensorGroup('second-group')" onmouseout="toggleSensorGroup('second-group')"/>
-          <svg id="secondLine" class="line" width="436" height="38" y="342" x="252.5" viewBox="0 0 436 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg id="secondLine" class="line" width="436" height="38" y="332.5" x="252.5" viewBox="0 0 436 38" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.5 37H399L435.5 0.5" stroke="#017DED"/>
           </svg>
-          <foreignobject id="thirdChip" class="chip" width="35" height="41" y="391.5" x="260" 
+          <foreignobject id="thirdChip" class="chip" width="35" height="41" y="381" x="260" 
            onmouseover="toggleSensorGroup('third-group')" onmouseout="toggleSensorGroup('third-group')"/>
-          <svg id="thirdLine" class="line" width="421" height="144" viewBox="0 0 421 144" y="417" x="295" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg id="thirdLine" class="line" width="421" height="144" viewBox="0 0 421 144" y="406" x="295" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 1H278.5L420.5 143" stroke="#017DED"/>
           </svg>
-           <foreignobject id="fourthChip" class="chip" width="35" height="41" y="435" x="220" 
+           <foreignobject id="fourthChip" class="chip" width="35" height="41" y="425" x="220" 
            onmouseover="toggleSensorGroup('fourth-group')" onmouseout="toggleSensorGroup('fourth-group')"/>
-          <svg id="fourthLine" class="line" width="223" height="128" y="454" x="255" viewBox="0 0 223 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg id="fourthLine" class="line" width="223" height="128" y="442" x="255" viewBox="0 0 223 128" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 1H95.5L222 127.5" stroke="#007DED"/>
           </svg>
-           <ellipse id="camera" class="chip" style="opacity:1;fill:#fff;" cx="-122.5" cy="307" rx="15" ry="15" 
+           <ellipse id="camera" class="chip" style="opacity:1;fill:#fff;" cx="-122.5" cy="299.5" rx="15" ry="15" 
            onmouseover="toggleSensorGroup('fifth-group')" onmouseout="toggleSensorGroup('fifth-group')"/>
-          <svg id="fifthLine" class="line" width="155" height="54" y="255" x="-290" viewBox="0 0 155 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg id="fifthLine" class="line" width="155" height="54" y="247" x="-290" viewBox="0 0 155 54" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M155 53H53L0.5 0.5" stroke="#007DED"/>
           </svg>
-           <foreignobject x="595.5" y="20" width="100%" height="100" >
+          <svg id="sixthLine" class="line" width="193" height="164" y="529" x="336.5" viewBox="0 0 193 164" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M192.5 163.5L57 28M57 28H0.5M57 28L29.5 0.5H0.5" stroke="#007DED"/>
+          </svg>            
+           <foreignobject x="595.5" y="19" width="100%" height="100" >
             <div name="first-group" class="sensor__circle" onmouseover="toggle('firstChip','firstLine')" onmouseout="toggle('firstChip','firstLine')">
               <image name="first-group" class="sensor" src="assets/sensors/temp.svg"  />
             </div>
@@ -64,7 +66,7 @@
               <p class="sensor__data__text">35&#8451</p>
             </div>
           </foreignobject>
-          <foreignobject x="595.5" y="85.5" width="100%" height="100">
+          <foreignobject x="596" y="82.5" width="100%" height="100">
             <div name="first-group" class="sensor__circle" onmouseover="toggle('firstChip','firstLine')" onmouseout="toggle('firstChip','firstLine')">
               <image name="first-group" class="sensor" src="assets/sensors/hum.svg" />
             </div>
@@ -73,7 +75,7 @@
               <p class="sensor__data__text">25%</p>
             </div>
           </foreignobject>
-          <foreignobject x="595.5" y="150.5" width="100%" height="100">
+          <foreignobject x="595.5" y="145.5" width="100%" height="100">
             <div name="first-group" class="sensor__circle" onmouseover="toggle('firstChip','firstLine')" onmouseout="toggle('firstChip','firstLine')">
               <image name="first-group" class="sensor" src="assets/sensors/press.svg" />
             </div>
@@ -82,7 +84,7 @@
               <p class="sensor__data__text">1014 HPA</p>
             </div>
           </foreignobject>
-          <foreignobject x="695" y="220" width="100%" height="100">
+          <foreignobject x="695" y="214" width="100%" height="100">
             <div name="second-group" class="sensor__circle" onmouseover="toggle('secondChip','secondLine')" onmouseout="toggle('secondChip','secondLine')">
               <image name="second-group" class="sensor" src="assets/sensors/prox.svg" />
             </div>
@@ -91,7 +93,7 @@
               <p class="sensor__data__text">60 CM</p>
             </div>
           </foreignobject>
-          <foreignobject x="695" y="285.5" width="100%" height="100">
+          <foreignobject x="695" y="278" width="100%" height="100">
             <div name="second-group" class="sensor__circle" onmouseover="toggle('secondChip','secondLine')" onmouseout="toggle('secondChip','secondLine')">
               <image name="second-group" class="sensor" src="assets/sensors/gest.svg" />
             </div>
@@ -100,7 +102,7 @@
               <p class="sensor__data__text">WAVE</p>
             </div>
           </foreignobject>
-          <foreignobject x="695" y="350.5" width="100%" height="100">
+          <foreignobject x="695" y="340.5" width="100%" height="100">
             <div name="second-group" class="sensor__circle" onmouseover="toggle('secondChip','secondLine')" onmouseout="toggle('secondChip','secondLine')">
               <image name="second-group" class="sensor" src="assets/sensors/color.svg" />
             </div>
@@ -109,7 +111,7 @@
               <p class="sensor__data__text">R:14 G:15 B:250</p>
             </div>     
           </foreignobject>
-          <foreignobject x="695" y="415" width="100%" height="100">
+          <foreignobject x="695" y="404" width="100%" height="100">
             <div name="second-group" class="sensor__circle" onmouseover="toggle('secondChip','secondLine')" onmouseout="toggle('secondChip','secondLine')">
               <image name="second-group" class="sensor" src="assets/sensors/bright.svg" />
             </div>
@@ -118,7 +120,7 @@
               <p class="sensor__data__text">1000 LUX</p>
             </div>
           </foreignobject>
-          <foreignobject x="723" y="499" width="100%" height="100">
+          <foreignobject x="723" y="485.5" width="100%" height="100">
             <div name="third-group" class="sensor__circle" onmouseover="toggle('thirdChip','thirdLine')" onmouseout="toggle('thirdChip','thirdLine')">
               <image name="third-group" class="sensor" src="assets/sensors/orient.svg" />
             </div>
@@ -127,7 +129,7 @@
               <p class="sensor__data__text">ROLL: 17 PITCH: 49</p>
             </div>
           </foreignobject>
-          <foreignobject x="723" y="565" width="100%" height="100">
+          <foreignobject x="723" y="549" width="100%" height="100">
             <div name="third-group" class="sensor__circle" onmouseover="toggle('thirdChip','thirdLine')" onmouseout="toggle('thirdChip','thirdLine')">
               <image name="third-group" class="sensor" src="assets/sensors/vibr.svg" />
             </div>
@@ -136,7 +138,7 @@
               <p class="sensor__data__text">35</p>
             </div>
           </foreignobject>
-          <foreignobject x="723" y="630" width="100%" height="100">
+          <foreignobject x="723" y="612" width="100%" height="100">
             <div name="third-group" class="sensor__circle" onmouseover="toggle('thirdChip','thirdLine')" onmouseout="toggle('thirdChip','thirdLine')">
               <image name="third-group" class="sensor" src="assets/sensors/motion.svg" />
             </div>
@@ -145,18 +147,18 @@
               <p class="sensor__data__text">DETECTED</p>
             </div>
           </foreignobject>
-          <foreignobject x="483" y="571" width="100" height="100">
+          <foreignobject x="483" y="555.5" width="100" height="100">
             <div name="fourth-group" class="sensor__circle" onmouseover="toggle('fourthChip','fourthLine')" onmouseout="toggle('fourthChip','fourthLine')" >
               <image name="fourth-group" class="sensor" src="assets/sensors/micro.svg" />
             </div>
           </foreignobject>
-          <foreignobject x="487.5" y="697.5" width="100" height="100">
+          <foreignobject x="-57" y="698.5" width="100" height="100">
             <div class="sensor__circle">
               <image class="sensor" src="assets/sensors/chip.svg" />
             </div>
           </foreignobject>
-          <foreignobject x="-508.5" y="176.5" width="213" height="100">
-            <div name="fifth-group" class="sensor__circle sensor__circle--left" onmouseover="toggle('camera','fifthLine')" onmouseout="toggle('camera','fifthLine')">
+          <foreignobject x="-508.5" y="172" width="213" height="100">
+            <div id="imageButton" name="fifth-group" class="sensor__circle sensor__circle--left" onmouseover="toggle('camera','fifthLine')" onmouseout="toggle('camera','fifthLine')" onclick="showFileDialog()">
               <image name="fifth-group" class="sensor" src="assets/sensors/picture.svg" />
             </div>
             <div name="fifth-group" class="sensor__data">
@@ -164,18 +166,18 @@
               <p class="sensor__data__text sensor__data__text--left">SAVED AS *.JPG</p>
             </div>
           </foreignobject>
-          <foreignobject x="-350" y="242" width="100" height="100">
+          <foreignobject x="-350" y="235" width="100" height="100">
             <div name="fifth-group" class="sensor__circle" onmouseover="toggle('camera','fifthLine')" onmouseout="toggle('camera','fifthLine')">
               <image name="fifth-group" class="sensor" src="assets/sensors/play.svg" />
             </div>
           </foreignobject>
-          <foreignobject x="-350" y="700" width="200" height="100">
-            <div class="sensor__circle">
+          <foreignobject x="527.5" y="682" width="200" height="200">
+            <div id="uart" class="sensor__circle uart__circle" onmouseover="startDrawingPath('sixthLine')" onmouseout="stopDrawingPath('sixthLine')">
               <image class="sensor" src="assets/sensors/uart_highlight.svg" onclick="openWindow()"/>
             </div>
             <div class="sensor__data sensor__uart">
-              <p class="sensor__data__name">UART</p>
-              <p id="uart_content" class="sensor__data__text"></p>
+              <p class="sensor__data__name uart__name">UART</p>
+              <p id="uart_content" class="sensor__data__text uart__text"></p>
             </div>
           </foreignobject>
         </svg>
