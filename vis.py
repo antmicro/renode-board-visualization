@@ -39,14 +39,15 @@ def blink_led(led, state):
     send_message("|".join(["LED", machine.GetLocalName(led), str(state)]))
 
 
-def send_uart_chars(char):
-    send_message("|".join(["UART", "uart0", chr(char)]))
+def send_uart_chars(char, uartName):
+    send_message("|".join(["UART", uartName, chr(char)]))
 
 main_server = None
 server_thread = None
 websocket_server = None
 websocket_thread = None
 
+send_uart_events = []
 machine = None
 
 print "Adding serveVisualization command."
@@ -69,9 +70,13 @@ def mc_serveVisualization(port):
     
     uarts = machine.GetPeripheralsOfType[IUART]()
     for uart in uarts:
-        uart.CharReceived += send_uart_chars
-        #break on uart0
-        break
+        uartName = clr.Reference[str]()
+        if not machine.TryGetAnyName(uart, uartName):
+            on_received = lambda char: send_uart_chars(char, uartName)
+        else:
+            on_received = lambda char: send_uart_chars(char, "unknown_uart")
+        uart.CharReceived += on_received
+        send_uart_events.append(on_received)
 
     # setting up server threads
     websocket_server = WebsocketServer(9001)
@@ -98,11 +103,13 @@ def mc_stopVisualization():
     global server_thread
     global websocket_server
     global websocket_thread
+    global send_uart_events
 
     if main_server is None:
         print "Start visualization with `serveVisualization {port}` first"
         return
-
+        
+    send_uart_events = None
     main_server.shutdown()
     main_server.server_close()
     websocket_server.close_server()
