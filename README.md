@@ -59,7 +59,11 @@ Then open [localhost:8000](http://localhost:8000) in your browser:
 xdg-open localhost:8000
 ```
 
-You will see a similar wireframe, but you will be able to observe the detection results in the UART bubble in the bottom left part of the page.
+You will see a similar wireframe, but you will be able to observe the detection results in the UART bubble in the bottom right part of the page.
+
+Click on the photo bubble (top left part of the page) to upload your image as a source file for the person detection demo.
+
+![Upload photo](./assets/person_detection.png)
 
 ## Testing
 
