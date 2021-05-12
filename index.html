@@ -235,12 +235,12 @@
       var timeoutId;
 
       function startTimer() { 
-          // window.setTimeout returns an Id that can be used to start and stop a timer
           timeoutId = window.setTimeout(doInactive, timeoutInMiliseconds)
       }
       
       function doInactive() {
         hide("uart")
+        stopDrawingPath("sixthLine")
       }
 
       function resetTimer() { 
@@ -270,6 +270,7 @@
           uartChars.push(message)
           uartContent.textContent = uartChars.slice(Math.max(uartChars.length - 40, 0)).toString().replace(/,/g, '')
           expand("uart")
+          startDrawingPath("sixthLine")
           resetTimer()
         }
       }
