@@ -261,8 +261,8 @@ footer {
   max-width: 500px;
 }
 
-.sensor__uart {
-  width: 200px;
+#uart {
+  width: 450px;
   height: 70px;
 }
 

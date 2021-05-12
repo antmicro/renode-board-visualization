@@ -172,11 +172,11 @@
               <image name="fifth-group" class="sensor" src="assets/sensors/play.svg" />
             </div>
           </foreignobject>
-          <foreignobject x="527.5" y="682" width="200" height="200">
-            <div id="uart" class="sensor__circle uart__circle" onmouseover="startDrawingPath('sixthLine')" onmouseout="stopDrawingPath('sixthLine')">
-              <image class="sensor" src="assets/sensors/uart_highlight.svg" onclick="openWindow()"/>
+          <foreignobject x="527.5" y="682" width="500" height="200">
+            <div name="uart" class="sensor__circle uart__circle" onmouseover="startDrawingPath('sixthLine')" onmouseout="stopDrawingPath('sixthLine')">
+              <image name="uart" class="sensor" src="assets/sensors/uart_highlight.svg" />
             </div>
-            <div class="sensor__data sensor__uart">
+            <div id="uart" name="uart" class="sensor__data">
               <p class="sensor__data__name uart__name">UART0</p>
               <p id="uart_content" class="sensor__data__text uart__text"></p>
             </div>
@@ -231,6 +231,23 @@
         console.log("onopen")
       }
 
+      var timeoutInMiliseconds = 3000;
+      var timeoutId;
+
+      function startTimer() { 
+          // window.setTimeout returns an Id that can be used to start and stop a timer
+          timeoutId = window.setTimeout(doInactive, timeoutInMiliseconds)
+      }
+      
+      function doInactive() {
+        hide("uart")
+      }
+
+      function resetTimer() { 
+        window.clearTimeout(timeoutId)
+        startTimer();
+      }
+
       ws.onmessage = function (e) {
         let split = e.data.split("|")
         let type = split[0]
@@ -251,7 +268,9 @@
         }
         else if (type == "UART") {
           uartChars.push(message)
-          uartContent.textContent = uartChars.slice(Math.max(uartChars.length - 10, 0)).toString().replace(/,/g, '');
+          uartContent.textContent = uartChars.slice(Math.max(uartChars.length - 40, 0)).toString().replace(/,/g, '')
+          expand("uart")
+          resetTimer()
         }
       }
 
@@ -280,8 +299,7 @@
       }
 
     })
-  </script>
-  <script>
+
     function toggleSensorGroup(groupName) {
       let elements = document.getElementsByName(groupName)
       for (el of elements) {
@@ -292,6 +310,28 @@
         }
         else {
           el.classList.add(expander)
+        }
+      }
+    }
+
+    function expand(groupName) {
+      let elements = document.getElementsByName(groupName)
+      for (el of elements) {
+        className = el.classList[0]
+        expander = className+"--expanded"
+        if (!el.classList.contains(expander)) {
+          el.classList.add(expander)
+        }
+      }
+    }
+
+    function hide(groupName) {
+      let elements = document.getElementsByName(groupName)
+      for (el of elements) {
+        className = el.classList[0]
+        expander = className+"--expanded"
+        if (el.classList.contains(expander)) {
+          el.classList.remove(expander)
         }
       }
     }
