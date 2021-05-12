@@ -62,6 +62,8 @@ xdg-open localhost:8000
 You will see a similar wireframe, but you will be able to observe the detection results in the UART bubble in the bottom right part of the page.
 
 Click on the photo bubble (top left part of the page) to upload your image as a source file for the person detection demo.
+The image has to be a JPEG smaller than 4kB.
+You can use a [provided sample image](./assets/person_detection_default.jpg).
 
 ![Upload photo](./assets/person_detection.png)
 
