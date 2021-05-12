@@ -67,7 +67,7 @@ server_thread = None
 websocket_server = None
 websocket_thread = None
 
-send_uart_events = []
+uart_event_map = {}
 machine = None
 
 print "Adding serveVisualization command."
@@ -96,7 +96,7 @@ def mc_serveVisualization(port):
         else:
             on_received = lambda char: send_uart_chars(char, "unknown_uart")
         uart.CharReceived += on_received
-        send_uart_events.append(on_received)
+        uart_event_map[uart] = on_received
 
     # setting up server threads
     websocket_server = WebsocketServer(9001)
@@ -123,13 +123,15 @@ def mc_stopVisualization():
     global server_thread
     global websocket_server
     global websocket_thread
-    global send_uart_events
+    global uart_event_map
 
     if main_server is None:
         print "Start visualization with `serveVisualization {port}` first"
         return
         
-    send_uart_events = None
+    for uart in uart_event_map.keys():
+        uart.CharReceived -= uart_event_map[uart]
+    
     main_server.shutdown()
     main_server.server_close()
     websocket_server.close_server()
