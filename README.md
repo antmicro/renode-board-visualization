@@ -23,13 +23,18 @@ export PATH="`pwd`/renode_portable:$PATH"
 ## Usage
 
 ### Blinky
+#### Using container to execute demo
+```
+podman build -t renode-board-viz-demo-blinky ./ -f Dockerfile --target=blinky && \
+podman run -it -e DISPLAY -v $XAUTHORITY:/home/developer/.Xauthority --net=host localhost/renode-board-viz-demo-blinky
+```
+Open a browser with url: http://localhost:8000 to view running demo.
 
+#### Using locally installed tooling
 To open the interactive visualisation in your browser, run:
 
 ```
 renode scripts/blinky.resc
-# in Renode:
-(machine-0) serveVisualization 8000
 ```
 
 Then point your browser to [localhost:8000](http://localhost:8000):
@@ -45,12 +50,18 @@ You should be able to see the Arduino Nano wireframe with a blinking LED and som
 ### Person detection
 
 Another available demo is the [TensorFlow Lite Micro person detection](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/micro/examples/person_detection).
+#### Using container to execute demo
+```
+podman build -t renode-board-vis-demo-person ./ -f Dockerfile --target=person
+podman run -it -e DISPLAY -v $XAUTHORITY:/home/developer/.Xauthority --net=host localhost/renode-board-viz-demo-person
+```
+Open a browser with url: http://localhost:8000 to view running demo.
+
+#### Using locally installed tooling
 To start it, run:
 
 ```
 renode scripts/person_detection.resc
-# in Renode:
-(machine-0) serveVisualization 8000
 ```
 
 Then open [localhost:8000](http://localhost:8000) in your browser:
