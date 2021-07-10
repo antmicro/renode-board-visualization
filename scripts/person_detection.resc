@@ -6,3 +6,5 @@ logLevel 3 nvic
 logLevel 3 clock
 i $ORIGIN/../vis.py
 s
+serveVisualization 8000
+

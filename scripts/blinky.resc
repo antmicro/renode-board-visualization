@@ -6,3 +6,5 @@ logLevel 3 nvic
 sysbus LoadELF $ORIGIN/../binaries/nordic-zephyr-blinky.elf
 i $ORIGIN/../vis.py
 s
+serveVisualization 8000
+
