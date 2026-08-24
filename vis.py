@@ -1,7 +1,3 @@
-import clr
-clr.AddReference("Renode-peripherals")
-clr.AddReference("IronPython.StdLib")
-
 import os
 import SimpleHTTPServer
 import SocketServer
@@ -12,13 +8,12 @@ import tempfile
 from Antmicro.Renode.Peripherals.Miscellaneous import LED
 from Antmicro.Renode.Peripherals.Sensors import ArduCAMMini2MPPlus
 from Antmicro.Renode.Peripherals.UART import IUART
-# get current path, 0 is for Renode directory, 1 for cwd
-cwd = monitor.CurrentPathPrefixes[1]
-sys.path.append(cwd)
+dir_path = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(dir_path)
 # fix compat issues
 #sys.version_info = [2,7,1]
 
-os.chdir(cwd)
+os.chdir(dir_path)
 
 from websocket_server import WebsocketServer
 
